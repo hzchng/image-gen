@@ -1,0 +1,51 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-format
+        entry: uv run ruff format
+        args:
+          - "--force-exclude"
+        language: system
+        types_or:
+          - python
+          - jupyter
+        pass_filenames: true
+
+      - id: ruff-check
+        entry: uv run ruff check
+        args:
+          - "--force-exclude"
+          - "--fix"
+        language: system
+        types_or:
+          - python
+          - jupyter
+        pass_filenames: true
+
+      - id: compile-requirements
+        entry: tk compile-requirements
+        language: system
+        files: uv.lock
+        pass_filenames: false
+
+  - repo: builtin
+    hooks:
+      - id: check-case-conflict
+      - id: check-illegal-windows-names
+      - id: check-json5
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      # - id: mixed-line-ending
+      #   exclude: requirements.txt
+      - id: no-commit-to-branch
+        args:
+          - "-b main"
+      - id: pretty-format-json
+        args:
+          - "--autofix"
+          - "--no-ensure-ascii"
+      - id: trailing-whitespace

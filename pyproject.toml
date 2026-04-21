@@ -4,4 +4,96 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "torch>=2.11.0",
+    "torchvision>=0.26.0",
+    "transformers>=5.5.4",
+]
+
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+    "prek>=0.3.8",
+    "ruff>=0.15.9",
+]
+
+
+[tool.uv]
+exclude-newer = "1 week"
+exclude-newer-package = { mlx-vlm = false, mlx-lm = false, mlx = false, mlx-embeddings = false  }
+
+
+[tool.uv.sources]
+mlx = { git = "https://github.com/ml-explore/mlx" }
+mlx-vlm = { git = "https://github.com/Blaizzy/mlx-vlm" }
+mlx-embeddings = { git = "https://github.com/Blaizzy/mlx-embeddings" }
+
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+indent-width = 4
+extend-exclude = [
+    ".ipynb_checkpoints",
+    ".pyenv",
+    ".pytest_cache",
+    ".vscode",
+    "build",
+    "site-packages",
+    "*pycache*",
+]
+
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+select = [
+    "A",        # flake8-builtins
+    "ANN",      # flake8-annotations
+    "ASYNC",    # flake8-async
+    "B",        # flake8-bugbear
+    "C",        # flake8-comprehensions
+    "C90",      # mccabe (function's complexity check)
+    "COM818",
+    "DTZ",      # flake8-datetimez
+    "E",        # pycodestyle
+    "EM",       # flake8-errmsg
+    "F",        # pyflakes
+    "FAST",     # FastAPI-specific linting rules
+    "FIX",      # flake-fixme
+    "FURB",     # refurb
+    "I",        # isort
+    "ICN",      # flake8-import-conventions
+    "N",        # pep8-naming
+    "PD",       # pandas-vet
+    "PL",       # Warning
+    "PTH",      # flake8-use-pathlib
+    "Q",
+    "RUF",      # Ruff-specific rules
+    "SIM",      # flake8-simplify
+    "UP",       # pyupgrade
+    "W",        # pycodestyle warnings
+]
+ignore = [
+    "ANN002",
+    "ANN003",
+    "ANN201",
+    "ANN204",
+    "ANN401",
+    "E111",
+    "E114",
+    "E117",
+    "E402",
+    "E501",
+    "F401",
+    "I001",
+    "PLC0415",
+    "PLR0913",
+    "PLR0915",
+    "PLR2004",
+    "RUF001",
+]
+
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
