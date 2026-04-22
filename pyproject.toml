@@ -5,9 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "torch>=2.11.0",
-    "torchvision>=0.26.0",
-    "transformers>=5.5.4",
+    "accelerate>=1.13.0",
+    "diffusers>=0.37.1",
+    "torch>=2.13.0.dev20260421",
+    "torchao>=0.17.0",
 ]
 
 
@@ -21,13 +22,22 @@ dev = [
 
 [tool.uv]
 exclude-newer = "1 week"
-exclude-newer-package = { mlx-vlm = false, mlx-lm = false, mlx = false, mlx-embeddings = false  }
+exclude-newer-package = { diffusers = false, torch = false, torchvision = false}
 
 
 [tool.uv.sources]
-mlx = { git = "https://github.com/ml-explore/mlx" }
-mlx-vlm = { git = "https://github.com/Blaizzy/mlx-vlm" }
-mlx-embeddings = { git = "https://github.com/Blaizzy/mlx-embeddings" }
+torch = [
+    { index = "pytorch-cpu" },
+]
+torchvision = [
+    { index = "pytorch-cpu" },
+]
+diffusers = { git = "https://github.com/huggingface/diffusers.git" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/nightly/cpu"
+explicit = true
 
 
 [tool.ruff]
