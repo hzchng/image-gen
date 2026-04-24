@@ -11,7 +11,7 @@ uv pip compile pyproject.toml \
     --no-header \
     --no-strip-extras \
     --no-strip-markers \
-    --python-platform aarch64-apple-darwin \
+    --python-platform linux \
     # --offline \
     > requirements.txt
 ```
