@@ -7,7 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "accelerate>=1.13.0",
     "diffusers>=0.37.1",
-    "mflux>=0.17.5",
+    "mflux>=0.18.0",
     "torch>=2.13.0.dev20260421",
     "torchao>=0.17.0",
 ]
